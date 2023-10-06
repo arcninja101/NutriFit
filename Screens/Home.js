@@ -1,11 +1,15 @@
-
-
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TextInput, Button, Image, TouchableHighlight } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { initializeApp } from 'firebase/app';
-import { initializeAuth, getAuth, UserCredential, signInWithEmailAndPassword,getReactNativePersistence } from 'firebase/auth';
+import {
+  initializeAuth,
+  getAuth,
+  UserCredential,
+  signInWithEmailAndPassword,
+  getReactNativePersistence
+} from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 // import {app,auth} from "../firebaseConfig";
@@ -27,7 +31,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app,{
+const auth = getAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
 
@@ -35,36 +39,17 @@ export default function Home(props) {
   const [emailid, setemailid] = useState('');
   const [password, setpassword] = useState('');
 
-  // const handleSignin = async () => {
-  //   try {
-  //     const userCredential = await signInWithEmailAndPassword(auth, emailid, password);
-  //     const user = userCredential.user;
-  //     console.log('User signed in:', user.email);
-      
-  //     // Navigate to MainScreen.js
-  //     props.navigation.navigate('MainScreen');
-  //   } catch (error) {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     alert(errorMessage);
-  //     if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
-  //       alert('Invalid email or password. Please check your credentials and try again.');
-  //     } else {
-  //       alert(errorMessage);
-  //     }
-  //   }
-  // }
   const handleSignin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, emailid, password);
       const user = userCredential.user;
       console.log('User signed in:', user.email);
-  
+
       // Navigate to MainScreen.js
       props.navigation.navigate('MainScreen');
     } catch (error) {
       const errorCode = error.code;
-  
+
       if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
         alert('Invalid email or password. Please check your credentials and try again.');
       } else {
@@ -72,8 +57,8 @@ export default function Home(props) {
         alert(errorMessage);
       }
     }
-  }
-  
+  };
+
   const handleSignup = () => {
     // Handle the text input here
     props.navigation.navigate('SignUp');
@@ -89,25 +74,31 @@ export default function Home(props) {
         label="Email ID"
         value={emailid}
         onChangeText={(emailid) => setemailid(emailid)}
-        placeholder={"Email ID"}
+        placeholder={'Email ID'}
         style={styles.input}
       />
       <TextInput
         label="Password"
         value={password}
         onChangeText={(password) => setpassword(password)}
-        placeholder={"Password"}
+        placeholder={'Password'}
         secureTextEntry
         style={styles.input}
       />
-      <View style={styles.button1style}>
-        <Button title="Sign-in" onPress={handleSignin} color={"black"} />
-      </View>
-      <View style={styles.button2style}>
-        <Button title="CREATE AN ACCOUNT" onPress={handleSignup} color={"black"} />
-      </View>
-      <Text style={{ left: 163, top: 280, fontSize: 18, color: "white", fontWeight: "bold" }}>OR</Text>
-      <Text style={{ left: 90, top: 590, fontSize: 14, color: "white", fontWeight: "bold" }}>*Sign in to access app features*</Text>
+      <TouchableHighlight underlayColor={'grey'} onPress={handleSignin} style={styles.button1style}>
+        <View style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>Sign-in</Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight underlayColor={'grey'} onPress={handleSignup} style={styles.button2style}>
+        <View style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>CREATE AN ACCOUNT</Text>
+        </View>
+      </TouchableHighlight>
+      <Text style={{ left: 163, top: 280, fontSize: 18, color: 'white', fontWeight: 'bold' }}>OR</Text>
+      <Text style={{ left: 90, top: 590, fontSize: 14, color: 'white', fontWeight: 'bold' }}>
+        *Sign in to access app features*
+      </Text>
     </View>
   );
 }
@@ -118,8 +109,8 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     position: 'absolute',
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   input: {
     width: 250,
@@ -132,15 +123,29 @@ const styles = StyleSheet.create({
     top: 200,
     left: 55,
   },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+    borderRadius: 10,
+    paddingVertical: 10,
+    //paddingHorizontal:5,
+    
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
   button1style: {
-    position: "absolute",
+    position: 'absolute',
     top: 360,
     left: 102,
     width: 150,
     marginTop: 10,
   },
   button2style: {
-    position: "absolute",
+    position: 'absolute',
     top: 455,
     left: 94,
     padding: 10,

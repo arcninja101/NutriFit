@@ -20,6 +20,7 @@ import DesiredBodyTypeScreen from './Screens/DesiredBodyTypeScreen';
 import ResultScreen from './Screens/ResultScreen';
 import TestBody from "./Screens/TestBody";
 import MainScreen from "./Screens/MainScreen";
+import 'react-native-gesture-handler';
 
 
 const Stack = createNativeStackNavigator ();
