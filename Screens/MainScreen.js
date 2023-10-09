@@ -340,6 +340,7 @@ export default function MainScreen(props) {
   const [userName, setUserName] = useState('');
   const [latestBMI, setLatestBMI] = useState(null);
   const [latestMaintenanceCalories, setLatestMaintenanceCalories] = useState(null);
+  const [latestWeight, setLatestWeight] = useState(null);
   const Drawer = createDrawerNavigator();
 
 
@@ -373,11 +374,13 @@ export default function MainScreen(props) {
             const userDisplayName = userData.Name; // Make sure to use the correct field name in Firestore
             setUserName(userDisplayName);
             // Fetch the latest BMI and maintenance calories
-            const latestBMIValue = userData.BMIHistory ? userData.BMIHistory[0] : null;
-            const latestCaloriesValue = userData.Calories ? userData.Calories[0] : null;
+            const latestBMIValue = userData.BMIHistory ? userData.BMIHistory[(userData.BMIHistory.length)-1] : null;
+            const latestCaloriesValue = userData.Calories ? userData.Calories[(userData.Calories.length)-1] : null;
+            const latestWeightValue = userData.WeightHistory? userData.WeightHistory[(userData.WeightHistory.length)-1] : null;
 
             setLatestBMI(latestBMIValue);
             setLatestMaintenanceCalories(latestCaloriesValue);
+            setLatestWeight(latestWeightValue);
           }
         } catch (error) {
           console.error('Error fetching user data:', error);
@@ -386,20 +389,25 @@ export default function MainScreen(props) {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, );
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-      <Drawer.Navigator>
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} />
-    </Drawer.Navigator>
+      {/* <Drawer.Navigator>
+      <Drawer.Screen name="BMICalculator" component={BMICalculator} />
+      <Drawer.Screen name="BMICalculator" component={BMICalculator} />
+    </Drawer.Navigator> */}
       <View style={styles.container}>
         <Text style={styles.text}>Welcome {userName}</Text>
         {/* <Text style={styles.nutrifitText}>NutriFit</Text> */}
         <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#FFBC6E', left: 240, top: 3, position: 'absolute' }}>
           NutriFit
         </Text>
+        {latestWeight !== null && (
+          <Card title="Latest Weight">
+            <Text style={styles.paragraph}>Your current Weight: {latestWeight} Kg</Text>
+          </Card>
+        )}
         {latestBMI !== null && (
           <Card title="Latest BMI">
             <Text style={styles.paragraph}>Your current BMI: {latestBMI}</Text>

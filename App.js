@@ -4,6 +4,7 @@ import React,{useState}  from 'react';
 import { ImageBackground, Image, StyleSheet, Text, View ,Pressable,TextInput,Button,KeyboardAvoidingView, ScrollView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
@@ -20,10 +21,24 @@ import DesiredBodyTypeScreen from './Screens/DesiredBodyTypeScreen';
 import ResultScreen from './Screens/ResultScreen';
 import TestBody from "./Screens/TestBody";
 import MainScreen from "./Screens/MainScreen";
+import ImageUpload from './Screens/ImageUpload';
+import NewScreen from './Screens/NewScreen';
 import 'react-native-gesture-handler';
 
 
 const Stack = createNativeStackNavigator ();
+const Drawer = createDrawerNavigator();
+
+const FuncDrawer = () =>{
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={MainScreen} />
+      <Drawer.Screen name="BMI Calculator" component={BMICalculator} />
+      <Drawer.Screen name="Maintenance Calorie Calculator" component={CalorieCalculator} />
+      <Drawer.Screen name="Upload Images" component={ImageUpload} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function App(){
   return (
@@ -38,7 +53,9 @@ export default function App(){
         <Stack.Screen name="DesiredBodyTypeScreen" component={DesiredBodyTypeScreen} options={{headerShown:false}} />
         <Stack.Screen name="ResultScreen" component={ResultScreen} options={{headerShown:false}} />
         <Stack.Screen name="TestBody" component={TestBody} options={{headerShown:false}} />
-        <Stack.Screen name="MainScreen" component={MainScreen} options={{headerShown:false}} />
+        <Stack.Screen name="MainScreen" component={FuncDrawer} options={{headerShown:false}} />
+        <Stack.Screen name="NewScreen" component={NewScreen} options={{headerShown:false}} />
+
 
 
 
