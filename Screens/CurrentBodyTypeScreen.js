@@ -71,7 +71,7 @@ export default function CurrentBodyTypeScreen({ route }) {
 const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
-    backgroundColor: '#101d32',
+   // backgroundColor: '#101d32',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40, // Add margin to the top
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     alignItems: 'center',
     borderRadius: 10,
-    backgroundColor: '#21293e',
+    //backgroundColor: '#21293e',
     borderWidth: 0,
     padding: 20,
   },

@@ -389,7 +389,7 @@ export default function MainScreen(props) {
     });
 
     return () => unsubscribe();
-  }, );
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
@@ -511,5 +511,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
+    textAlign:"center"
   },
 });

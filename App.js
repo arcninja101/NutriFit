@@ -11,11 +11,11 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
+
 import Home from "./Screens/Home";
 import SignUp from './Screens/SignUp';
 import BMICalculator from './Screens/BMICalculator';
 import CalorieCalculator from "./Screens/CalorieCalculator"
-import BodyTypeScreen from './Screens/BodyTypeScreen';
 import CurrentBodyTypeScreen from './Screens/CurrentBodyTypeScreen';
 import DesiredBodyTypeScreen from './Screens/DesiredBodyTypeScreen';
 import ResultScreen from './Screens/ResultScreen';
@@ -23,6 +23,11 @@ import TestBody from "./Screens/TestBody";
 import MainScreen from "./Screens/MainScreen";
 import ImageUpload from './Screens/ImageUpload';
 import NewScreen from './Screens/NewScreen';
+import AllBMI from './Screens/AllBMI';
+import SignOut from './Screens/SignOut';
+import ForgotPassword from './Screens/ForgotPassword';
+
+
 import 'react-native-gesture-handler';
 
 
@@ -32,10 +37,17 @@ const Drawer = createDrawerNavigator();
 const FuncDrawer = () =>{
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={MainScreen} />
+      <Drawer.Screen name="Main Page" component={MainScreen} />
       <Drawer.Screen name="BMI Calculator" component={BMICalculator} />
       <Drawer.Screen name="Maintenance Calorie Calculator" component={CalorieCalculator} />
-      <Drawer.Screen name="Upload Images" component={ImageUpload} />
+      <Drawer.Screen name="Images" component={ImageUpload} />
+      <Drawer.Screen name="Sign Out" component={SignOut} />
+      <Drawer.Screen name="Forgot Password" component={ForgotPassword} />
+
+
+
+      {/* <Drawer.Screen name="AllBMI" component={AllBMI} />  */}
+
     </Drawer.Navigator>
   );
 }
@@ -48,13 +60,13 @@ export default function App(){
         <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:false}} />
         <Stack.Screen name="BMICalculator" component={BMICalculator} options={{headerShown:false}}/>
         <Stack.Screen name="CalorieCalculator" component={CalorieCalculator} options={{headerShown:false}} />
-        <Stack.Screen name="BodyTypeScreen" component={BodyTypeScreen} options={{headerShown:false}} />
         <Stack.Screen name="CurrentBodyTypeScreen" component={CurrentBodyTypeScreen} options={{headerShown:false}} />
         <Stack.Screen name="DesiredBodyTypeScreen" component={DesiredBodyTypeScreen} options={{headerShown:false}} />
         <Stack.Screen name="ResultScreen" component={ResultScreen} options={{headerShown:false}} />
         <Stack.Screen name="TestBody" component={TestBody} options={{headerShown:false}} />
         <Stack.Screen name="MainScreen" component={FuncDrawer} options={{headerShown:false}} />
         <Stack.Screen name="NewScreen" component={NewScreen} options={{headerShown:false}} />
+        
 
 
 
@@ -80,118 +92,3 @@ export default function App(){
 
 
 
-
-
-
-//Import the bg img
-//const backgroundImage = require('./assets/bgimg2.png');
-
-
-
-
-
-
-// export default function App() {
-//   const [emailid, setemailid] = useState('');
-//   const [password, setpassword] = useState('');
-  
-//   const handleSignin = () => {
-//     console.log('SIGN IN CREDENTIALS', emailid,password);
-//   }
-//   const handleSignup= () => {
-//     console.log('SIGN UP CREDENTIALS', emailid,password);
-//   };
-//   return (
-   
-//     <View style={styles.container}>
-    
-//       <ImageBackground source={backgroundImage} style={styles.backgroundImage} />
-//       <Text style={{fontSize:25,fontWeight:'bold',color:"#FFBC6E",left:267,top:39,position:"absolute"}}>NutriFit</Text>
-      
-//       <TextInput
-          
-//           label="Email ID"
-//           value={emailid}
-//           onChangeText={(emailid) => setemailid(emailid)}
-//           placeholder={"Email ID"}
-//           style={styles.input}
-          
-//         />
-//         <TextInput
-//           label="Password"
-//           value={password}
-//           onChangeText={(password) => setpassword(password)}
-//           placeholder={"Password"}
-//           secureTextEntry
-//           style={styles.input}
-//         />
-//         <View style={styles.box}>
-        
-//       </View>
-//       <View style={styles.button1style}>
-//       <Button title="Sign-in" onPress={handleSignin} color={"black"}/>
-//       </View>
-//       <View style={styles.button2style}>
-//       <Button title="Sign-up" onPress={handleSignup} color={"black"}/>
-      
-//       </View>
-    
-//       <Text style={{left:-3,bottom:149,fontSize:18,color:"white"}}>OR</Text>   
-    
-     
-//       <StatusBar style="light" />
-     
-//     </View>
-    
-//   );
-// }
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     //backgroundColor: '',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   backgroundImage: {
-//     position: 'absolute',
-//     width: "100%",
-//     height: "100%",
-//   },
-//   footerContainer: {
-//     flex: 1 /3,
-//     alignItems: 'center',
-//   },
-//   input: {
-    
-//     width: 250,
-//     height: 44,
-//     padding: 10,
-//     marginTop: 20,
-//     marginBottom: 10,
-//     backgroundColor: 'white',
-//     borderRadius:20,
-//     bottom: 200,
-//     position:"relative",
-//   },
-//   movedInput:{
-//     position: 'absolute',
-//     top: 130, 
-//     left: 0
-//   },
-
-//   button1style:{
-//     position:"absolute",
-//     top:300,
-//     left:90,
-
-//   },
-//   button2style:{
-//     position:"absolute",
-//     top:300,
-//     left:200,
-//     //backgroundColor:"grey",
-    
-//   }
-// });

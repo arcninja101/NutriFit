@@ -39,6 +39,12 @@ export default function Home(props) {
   const [emailid, setemailid] = useState('');
   const [password, setpassword] = useState('');
 
+  const clearInputFields = () => {
+    setemailid('');
+    setpassword('');
+  };
+
+
   const handleSignin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, emailid, password);
