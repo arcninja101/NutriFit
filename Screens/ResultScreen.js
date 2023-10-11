@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   button:{
     position:"absolute",
-    top:50,
+    top:20,
     left:10,
   },
   finaltext:{

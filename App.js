@@ -19,7 +19,6 @@ import CalorieCalculator from "./Screens/CalorieCalculator"
 import CurrentBodyTypeScreen from './Screens/CurrentBodyTypeScreen';
 import DesiredBodyTypeScreen from './Screens/DesiredBodyTypeScreen';
 import ResultScreen from './Screens/ResultScreen';
-import TestBody from "./Screens/TestBody";
 import MainScreen from "./Screens/MainScreen";
 import ImageUpload from './Screens/ImageUpload';
 import NewScreen from './Screens/NewScreen';
@@ -43,6 +42,7 @@ const FuncDrawer = () =>{
       <Drawer.Screen name="Images" component={ImageUpload} />
       <Drawer.Screen name="Sign Out" component={SignOut} />
       <Drawer.Screen name="Forgot Password" component={ForgotPassword} />
+      
 
 
 
@@ -60,10 +60,10 @@ export default function App(){
         <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:false}} />
         <Stack.Screen name="BMICalculator" component={BMICalculator} options={{headerShown:false}}/>
         <Stack.Screen name="CalorieCalculator" component={CalorieCalculator} options={{headerShown:false}} />
-        <Stack.Screen name="CurrentBodyTypeScreen" component={CurrentBodyTypeScreen} options={{headerShown:false}} />
-        <Stack.Screen name="DesiredBodyTypeScreen" component={DesiredBodyTypeScreen} options={{headerShown:false}} />
-        <Stack.Screen name="ResultScreen" component={ResultScreen} options={{headerShown:false}} />
-        <Stack.Screen name="TestBody" component={TestBody} options={{headerShown:false}} />
+        <Stack.Screen name="CurrentBodyTypeScreen" component={CurrentBodyTypeScreen} options={{headerShown: true, headerTitle: 'Choose Current Body Type'}} />
+<Stack.Screen name="DesiredBodyTypeScreen" component={DesiredBodyTypeScreen} options={{headerShown: true, headerTitle: 'Choose Desired Body Type'}} />
+
+        <Stack.Screen name="ResultScreen" component={ResultScreen} options={{headerShown:true, headerTitle:"Result"}} />
         <Stack.Screen name="MainScreen" component={FuncDrawer} options={{headerShown:false}} />
         <Stack.Screen name="NewScreen" component={NewScreen} options={{headerShown:false}} />
         

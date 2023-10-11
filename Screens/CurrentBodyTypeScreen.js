@@ -47,7 +47,6 @@ export default function CurrentBodyTypeScreen({ route }) {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
-      <Text style={styles.title}>Choose Your Current Body Type</Text>
       {bodyTypes.map((bodyType, index) => (
         <View key={index} style={styles.bodyTypeContainer}>
           <Card containerStyle={styles.cardContainer}>

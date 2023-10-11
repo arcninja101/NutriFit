@@ -60,7 +60,6 @@ export default function DesiredBodyTypeScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
-      <Text style={styles.title}>Choose Your Desired Body Type</Text>
       {bodyTypes.map((bodyType, index) => (
         <View key={index} style={styles.bodyTypeContainer}>
           <Card containerStyle={styles.cardContainer}>
