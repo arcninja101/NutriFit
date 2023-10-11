@@ -22,7 +22,6 @@ import ResultScreen from './Screens/ResultScreen';
 import MainScreen from "./Screens/MainScreen";
 import ImageUpload from './Screens/ImageUpload';
 import NewScreen from './Screens/NewScreen';
-import AllBMI from './Screens/AllBMI';
 import SignOut from './Screens/SignOut';
 import ForgotPassword from './Screens/ForgotPassword';
 
